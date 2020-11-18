@@ -47,6 +47,25 @@ public class Lab1 {
 		return (Character) null;
 	}
 	
+	/**
+	 * Task №3
+	 * counts the digital root - recursive sum of all the digits in a number
+	 * @param number 
+	 * @return its digital root
+	 */
+	public static int digitalRoot(int number) {
+		int sum = number;
+		while (sum > 10) {
+			number = sum;
+			sum = 0;
+			while (number > 0) {
+				sum += number % 10; // add the last digit to current sum
+				number /= 10; //cut the last digit of the number 
+			}
+		}
+		return sum;
+	}
+	
 	public static void main(String[] args) {
 		// Tests for task 1
 		assertTrue(getIntegersFromList(Arrays.asList(1, 2, "a", "b")).equals(Arrays.asList(1, 2)));
@@ -56,6 +75,12 @@ public class Lab1 {
 		// Tests for task 2
 		assertEquals(getFirstNonRepeatingLetter("stress"), 't');
 		assertEquals(getFirstNonRepeatingLetter("sTreSS"), 'T');
+		
+		// Tests for task 3
+		assertEquals(digitalRoot(16), 7);
+		assertEquals(digitalRoot(942), 6);
+		assertEquals(digitalRoot(132189), 6);
+		assertEquals(digitalRoot(493193), 2);
 	}
 
 }
