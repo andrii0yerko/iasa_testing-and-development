@@ -66,6 +66,25 @@ public class Lab1 {
 		return sum;
 	}
 	
+	/**
+	 * Task №4
+	 * counts the number of pairs in the array, the sum of which will give target
+	 * @param target number
+	 * @param array of integers
+	 * @return number of pairs, the sum of which will give target
+	 */
+	public static int numberOfTargetPairs(int target, int[] array) {
+		int counter = 0;
+		for (int i = 0; i < array.length - 1; i++) {
+			for (int j = i+1; j < array.length; j++) {
+				if (array[i] + array[j] == target) counter++;
+			}
+		}
+		return counter;
+	}
+	
+	
+	
 	public static void main(String[] args) {
 		// Tests for task 1
 		assertTrue(getIntegersFromList(Arrays.asList(1, 2, "a", "b")).equals(Arrays.asList(1, 2)));
@@ -81,6 +100,12 @@ public class Lab1 {
 		assertEquals(digitalRoot(942), 6);
 		assertEquals(digitalRoot(132189), 6);
 		assertEquals(digitalRoot(493193), 2);
+		
+		// Tests for task 4
+		assertEquals(numberOfTargetPairs(5, new int[]{1,3,6,2,2,0,4,5}), 4);
+		assertEquals(numberOfTargetPairs(6, new int[]{3,3,4,2,0,0,0}), 2);
+		System.out.print("Finished successfully");
+		
 	}
 
 }
