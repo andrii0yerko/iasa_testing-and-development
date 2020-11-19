@@ -1,3 +1,3 @@
 module lab1 {
-	requires junit;
+	// requires junit;
 }
