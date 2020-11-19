@@ -104,6 +104,44 @@ public class Lab1 {
 		return guests;
 	}
 	
+	/**
+	 * Extra task №1
+	 * Takes a positive integer and returns the next bigger number that can be formed by rearranging its digits.
+	 * If the digits can't be rearranged to form a bigger number, return -1
+	 * @param number
+	 * @return next bigger integer according to these rules
+	 */
+	public static int nextBigger(int number) {
+		char[] digits = String.valueOf(number).toCharArray(); // found converting to string the most simple way to get an array of number digits
+		for (int i = digits.length - 1; i > 0; i--) {
+			for (int j = i-1; j >= 0; j--) {
+				if (digits[j] < digits[i]) { // swap the exponent rank with the closest higher one
+					char tmp = digits[j];
+					digits[j] = digits[i];
+					digits[i] = tmp;
+					return Integer.parseInt(String.valueOf(digits)); // converting back to int
+				}
+			}
+		}
+		return -1;
+	}
+	
+	/**
+	 * Extra task №2
+	 * Takes an unsigned 32 bit number and returns a string representation of its IPv4 address.
+	 * @param number - unsigned 32 int
+	 * @return a string representation of its IPv4 address
+	 */
+	public static String numberToIPv4(long number) {
+		String ip = "";
+		// converting toBinaryString and expanding right with zeros to 32 chars
+		String binary = String.format("%1$" + 32 + "s", Long.toBinaryString(number)).replace(' ', '0');
+		for (String octet : binary.split("(?<=\\G.{8})")) { // split into substrings with length 8
+			ip += Integer.parseInt(octet, 2) + "."; // convert each octet to integer
+		}
+		return ip.substring(0, ip.length()-1); // exclude last char, what is an unnecessary dot
+	}
+	
 	public static void main(String[] args) {
 		// Tests for task 1
 		assertTrue(getIntegersFromList(Arrays.asList(1, 2, "a", "b")).equals(Arrays.asList(1, 2)));
@@ -128,6 +166,19 @@ public class Lab1 {
 		assertTrue(meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjorn:Tornbull;Raphael:Corwill;Alfred:Corwill")
 				.equals("(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJORN)")
 				);
+		
+		// Tests for extra task 1
+		assertEquals(nextBigger(12), 21);
+		assertEquals(nextBigger(513), 531);
+		assertEquals(nextBigger(2017), 2071);
+		assertEquals(nextBigger(9), -1);
+		assertEquals(nextBigger(111), -1);
+		assertEquals(nextBigger(531), -1);
+		
+		// Tests for extra task 2
+		assertTrue(numberToIPv4(2149583361l).equals("128.32.10.1"));
+		assertTrue(numberToIPv4(32).equals("0.0.0.32"));
+		assertTrue(numberToIPv4(0).equals("0.0.0.0"));
 		
 		System.out.print("Finished successfully");
 		
