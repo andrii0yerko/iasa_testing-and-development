@@ -83,7 +83,26 @@ public class Lab1 {
 		return counter;
 	}
 	
-	
+	/**
+	 * Task №5
+	 * Sorts guests by last names, if the last names are the same, sorts them by first name.
+	 * Last name and first name of a guest come in the result between parentheses separated by a comma in uppercase.
+	 * @param guests - string in format "name:surname;name:surname..."
+	 * @return string in format "(NAME, SURNAME)(NAME, SURNAME)..."
+	 */
+	public static String meeting(String guests) {
+		String[] guestsArr = guests.toUpperCase().split(";"); // split input string into a guests substrings, and change case to upper
+		for (int i=0; i < guestsArr.length; i++) {
+			String[] name = guestsArr[i].split(":", 2); // split into first and last name
+			guestsArr[i] = String.format("(%s, %s)", name[1], name[0]); //and change guest format to expected
+		}
+		Arrays.sort(guestsArr); // sort guests
+		guests = "";
+		for (String guest : guestsArr) {
+			guests += guest; // combine into result string
+		}
+		return guests;
+	}
 	
 	public static void main(String[] args) {
 		// Tests for task 1
@@ -104,6 +123,12 @@ public class Lab1 {
 		// Tests for task 4
 		assertEquals(numberOfTargetPairs(5, new int[]{1,3,6,2,2,0,4,5}), 4);
 		assertEquals(numberOfTargetPairs(6, new int[]{3,3,4,2,0,0,0}), 2);
+		
+		// Tests for task 5
+		assertTrue(meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjorn:Tornbull;Raphael:Corwill;Alfred:Corwill")
+				.equals("(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJORN)")
+				);
+		
 		System.out.print("Finished successfully");
 		
 	}
