@@ -71,14 +71,14 @@ public class Lab1 {
     }
 
     /**
-     * Task №4 counts the number of pairs in the array, the sum of which will give
-     * target
+     * Task №4.1 counts the number of pairs in the array, the sum of which will give
+     * target, using for loops
      * 
      * @param target number
      * @param array  of integers
      * @return number of pairs, the sum of which will give target
      */
-    public static int numberOfTargetPairs(int target, int[] array) {
+    public static int numberOfTargetPairs_for(int target, int[] array) {
         int counter = 0;
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = i + 1; j < array.length; j++) {
@@ -87,6 +87,28 @@ public class Lab1 {
             }
         }
         return counter;
+    }
+    
+    /**
+     * Task №4.2 counts the number of pairs in the array, the sum of which will give
+     * target, using streams
+     * 
+     * @param target number
+     * @param array  of integers
+     * @return number of pairs, the sum of which will give target
+     */
+    public static int numberOfTargetPairs_stream(int target, int[] array) {
+        int pairs = Arrays.stream(array)
+                          .map(a -> ((int) Arrays.stream(array)
+                                                 .filter(b -> a+b == target)
+                                                 .count()
+                                                 )
+                                  )
+                          .sum();
+        int selfpairs = (int) Arrays.stream(array)
+                                    .filter(a -> 2*a == target)
+                                    .count();
+        return (pairs - selfpairs)/2;
     }
 
     /**
@@ -171,8 +193,10 @@ public class Lab1 {
         assertEquals(digitalRoot(493193), 2);
 
         // Tests for task 4
-        assertEquals(numberOfTargetPairs(5, new int[] { 1, 3, 6, 2, 2, 0, 4, 5 }), 4);
-        assertEquals(numberOfTargetPairs(6, new int[] { 3, 3, 4, 2, 0, 0, 0 }), 2);
+        assertEquals(numberOfTargetPairs_for(5, new int[] { 1, 3, 6, 2, 2, 0, 4, 5 }), 4);
+        assertEquals(numberOfTargetPairs_for(6, new int[] { 3, 3, 4, 2, 0, 0, 0 }), 2);
+        assertEquals(numberOfTargetPairs_stream(5, new int[] { 1, 3, 6, 2, 2, 0, 4, 5 }), 4);
+        assertEquals(numberOfTargetPairs_stream(6, new int[] { 3, 3, 4, 2, 0, 0, 0 }), 2);
 
         // Tests for task 5
         assertTrue(meeting(
@@ -193,7 +217,6 @@ public class Lab1 {
         assertTrue(numberToIPv4(0).equals("0.0.0.0"));
 
         System.out.print("Finished successfully");
-
     }
 
 }
