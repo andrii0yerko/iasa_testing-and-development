@@ -57,6 +57,20 @@ public class Lab1 {
      * @param number
      * @return its digital root
      */
+    public static int digitalRoot_recursion(int number) { //wrapper that makes untilOneDigit true by default
+        return digitalRoot_recursion(number, true);
+    }
+    public static int digitalRoot_recursion(int number, boolean untilOneDigit) {
+        if (number < 10) return number;
+        if (!untilOneDigit) // recursion loop with untilOneDigit=false counts sum of digits once, like abc -> a+b+c
+            return number % 10 + digitalRoot_recursion(number/10, false);
+        
+        // if counting until one digit
+        number = digitalRoot_recursion(number, false); // replace a number with a sum of its digit 
+        return digitalRoot_recursion(number, true); // repeat for a new number
+    }
+    
+    @Deprecated //haha
     public static int digitalRoot(int number) {
         int sum = number;
         while (sum > 10) {
@@ -187,10 +201,10 @@ public class Lab1 {
         assertEquals(getFirstNonRepeatingLetter("sTreSS"), 'T');
 
         // Tests for task 3
-        assertEquals(digitalRoot(16), 7);
-        assertEquals(digitalRoot(942), 6);
-        assertEquals(digitalRoot(132189), 6);
-        assertEquals(digitalRoot(493193), 2);
+        assertEquals(digitalRoot_recursion(16), 7);
+        assertEquals(digitalRoot_recursion(942), 6);
+        assertEquals(digitalRoot_recursion(132189), 6);
+        assertEquals(digitalRoot_recursion(493193), 2);
 
         // Tests for task 4
         assertEquals(numberOfTargetPairs_for(5, new int[] { 1, 3, 6, 2, 2, 0, 4, 5 }), 4);
