@@ -19,7 +19,7 @@ public class ApiTests {
 
     @Test
     public void uploadFileTest() {
-        // rest assured adds charset specification by default which is not expected by dropbox and
+        // rest assured adds charset specification by default which is not expected by dropbox and results in an error
         RestAssured.config = RestAssured.config().encoderConfig(encoderConfig().appendDefaultContentCharsetToContentTypeIfUndefined(false));
 
         File file = new File("src/main/resources/sample.jpg");
