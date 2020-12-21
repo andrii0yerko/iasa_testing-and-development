@@ -10,6 +10,8 @@ Notice that you should have your own Auth token to reproduce these requests both
 
 To use Java tests enter your token to field `bearerToken` in `Config.java`. To use Postman collection create a variable named `AuthToken` and put your token in it.
 
+This branch contains the Maven project, so you can simply run it with `mvn test` from the project directory, or export to your IDE (I'm using IntelliJ IDEA).
+
 ---
 Tasks are placed in different [branches](https://github.com/andrii0yerko/iasa_testing-and-development/branches)
 * [Home Task 4: WebAPI basics](https://github.com/andrii0yerko/iasa_testing-and-development/tree/andrii.yerko_lab4)
