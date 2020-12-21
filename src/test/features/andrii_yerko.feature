@@ -10,7 +10,7 @@ Feature: Site works!
   Rule: Header behavior
 
     Scenario: User clicks on logo
-      Given I am on the {} page
+      Given I am on the main page
       When I click on logo
       Then I should be redirected to the main page
 
@@ -21,8 +21,8 @@ Feature: Site works!
 
     Scenario Outline: User changes language or region
       Given Region panel is open
-      When I click on <region>
-      Then I should be redirected to the <region_page>
+      When I click on <region> region
+      Then I should be redirected to the <region_page> region page
       Examples:
         | region  | region_page              |
         | Ukraine | https://careers.epam.ua/ |
@@ -39,7 +39,7 @@ Feature: Site works!
     Scenario: Suggest frequent searches
       Given input is empty
       When cursor is placed in input field
-      Then hint text should display
+#      Then hint text should display
       And frequent searches menu should be displayed
 
     Scenario: User writes a search query
