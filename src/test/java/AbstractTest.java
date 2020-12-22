@@ -1,13 +1,15 @@
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
+/**
+ * Abstract class that implements common behavior for all Rules -
+ * WebDriver launching and closing, and contains basic Pages variables
+ */
+public abstract class AbstractTest {
 
-public class TestRunner {
     public static WebDriver driver;
     public static MainPage mainPage;
 
@@ -21,8 +23,6 @@ public class TestRunner {
 
     @AfterAll
     public static void closeBrowser() {
-        driver.quit();
+//        driver.quit();
     }
-
-
 }

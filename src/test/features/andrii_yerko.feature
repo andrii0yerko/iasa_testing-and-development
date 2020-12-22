@@ -48,7 +48,7 @@ Feature: Site works!
       When I write something
       Then frequent searches menu should disappear
 
-    Scenario:
+    Scenario: User removes cursor
       Given frequent searches menu is shown
       When I remove the cursor from the input field
       Then frequent searches menu should disappear
