@@ -14,10 +14,18 @@ Feature: Site works!
       When I click on logo
       Then I should be redirected to the main page
 
-    Scenario: Using dropdown menus
+#    Scenario: Using dropdown menus
+#      Given header is displayed
+#      When I point cursor on the {} section and drop-down menu is available for it
+#      Then drop-down menu should appear
+
+# I decide to write another scenario to avoid testing adaptive gui testing which requires
+# much more scenarios at all
+
+    Scenario: User searches for contact
       Given header is displayed
-      When I point cursor on the {} section and drop-down menu is available for it
-      Then drop-down menu should appear
+      When I click on contact us buttont
+      Then I should be redirected to Contact Us page
 
     Scenario Outline: User changes language or region
       Given Region panel is open

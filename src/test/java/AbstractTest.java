@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
- * Abstract class that implements common behavior for all Rules -
+ * Abstract class that implements common behavior for all tests -
  * WebDriver launching and closing, and contains basic Pages variables
  */
 public abstract class AbstractTest {

@@ -6,6 +6,8 @@ public class MainPage extends Page{
         super(driver);
     }
 
+    public static final String URL = "https://www.epam.com/";
+
     // search
     @FindBy(className = "header-search__button")
     WebElement searchButton;
@@ -73,4 +75,14 @@ public class MainPage extends Page{
         acceptCookiesButton.click();
     }
 
+    // header
+    public void clickOnLogo() {
+        WebElement logo = driver.findElement(By.className("header__logo"));
+        logo.click();
+    }
+
+    public void clickOnContactUs() {
+        WebElement contactUsButton = driver.findElement(By.className("cta-button-ui"));
+        contactUsButton.click();
+    }
 }
