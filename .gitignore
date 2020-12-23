@@ -1,2 +1,6 @@
-# binary files
+# Maven binary files
 /target/
+
+# IDEA project files
+/.idea/
+*.iml
