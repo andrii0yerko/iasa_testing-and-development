@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>lab3</groupId>
     <artifactId>lab3</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -52,12 +52,21 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+<!--            integration with junit-->
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>6.9.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
+<!--            cucumber dependency injection-->
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>6.9.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+<!--            for cucumber integration-->
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
             <version>5.7.0</version>

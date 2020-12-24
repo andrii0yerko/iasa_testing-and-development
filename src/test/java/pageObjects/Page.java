@@ -7,8 +7,8 @@ public abstract class Page {
     public WebDriver driver;
 
     public Page(WebDriver driver) {
-        PageFactory.initElements(driver, this);
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
 }

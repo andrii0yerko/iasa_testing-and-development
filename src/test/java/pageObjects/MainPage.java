@@ -60,8 +60,7 @@ public class MainPage extends Page{
     }
 
     // cookies bottom panel
-    @FindBy(className = "cookie-disclaimer__button")
-    WebElement acceptCookiesButton;
+
 
     public boolean isCookiesDisclaimerVisible() {
         try {
@@ -74,6 +73,7 @@ public class MainPage extends Page{
     }
 
     public void acceptCookies() {
+        WebElement acceptCookiesButton = driver.findElement(By.className("cookie-disclaimer__button"));
         acceptCookiesButton.click();
     }
 

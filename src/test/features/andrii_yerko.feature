@@ -62,15 +62,3 @@ Feature: Site works!
       Then frequent searches menu should disappear
 
   # 7, 8
-  Rule: Cookies notification
-
-    Scenario: Notify the user about cookies
-      Given user opens site
-      And cookies are not accepted
-      When page is loaded
-      Then notification about cookies should be displayed
-
-    Scenario: User accepts cookies
-      Given notification about cookies is visible
-      When I click Accept
-      Then notification should disappear
