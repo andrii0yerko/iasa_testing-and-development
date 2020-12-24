@@ -1,4 +1,6 @@
-import org.junit.jupiter.api.AfterAll;
+package stepDefinitions;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -16,13 +18,13 @@ public class CookiesNotificationTest extends AbstractTest{
      */
     @BeforeAll
     public static void given() {
-        assertTrue(mainPage.isCookiesDisclaimerVisible());
+        Assertions.assertTrue(mainPage.isCookiesDisclaimerVisible());
     }
 
     @Test
     public void userAcceptsCookies() {
         mainPage.acceptCookies();
-        assertFalse(mainPage.isCookiesDisclaimerVisible());
+        Assertions.assertFalse(mainPage.isCookiesDisclaimerVisible());
     }
 
 }

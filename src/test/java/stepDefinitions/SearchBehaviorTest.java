@@ -1,3 +1,6 @@
+package stepDefinitions;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -17,19 +20,19 @@ public class SearchBehaviorTest extends AbstractTest{
     @Test
     public void suggestFrequentSearches() {
         mainPage.placeCursorInTextField();
-        assertTrue(mainPage.isFrequentSearchesDropDownVisible());
+        Assertions.assertTrue(mainPage.isFrequentSearchesDropDownVisible());
     }
 
     @Test
     public void userWritesSearchQuery() {
         mainPage.writeASearchQuery("Hey there!");
-        assertFalse(mainPage.isFrequentSearchesDropDownVisible());
+        Assertions.assertFalse(mainPage.isFrequentSearchesDropDownVisible());
         mainPage.clearSearchField();
     }
 
     @Test
     public void userRemovesCursor() {
         mainPage.clickOnSearchPanel();
-        assertFalse(mainPage.isFrequentSearchesDropDownVisible());
+        Assertions.assertFalse(mainPage.isFrequentSearchesDropDownVisible());
     }
 }
