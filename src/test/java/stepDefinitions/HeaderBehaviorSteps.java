@@ -7,6 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.ContactPage;
+import pageObjects.Header;
 import pageObjects.MainPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,8 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class HeaderBehaviorSteps {
     TestContext context;
     WebDriver driver;
-    MainPage mainPage;
-    ContactPage contactPage;
+    Header header;
 
     public HeaderBehaviorSteps(TestContext testContext) {
         context = testContext;
@@ -25,12 +25,12 @@ public class HeaderBehaviorSteps {
     @Given("I am on the Contact Us page")
     public void IAmOnTheContactUsPage() {
         driver.get(ContactPage.URL);
-        contactPage = new ContactPage(driver);
+        header = new Header(driver);
     }
 
     @When("I click on logo")
     public void iClickOnLogo() {
-        contactPage.clickOnLogo();
+        header.clickOnLogo();
     }
 
     @Then("I should be redirected to the {}")
@@ -39,10 +39,10 @@ public class HeaderBehaviorSteps {
         // and specifying url directly in .feature
         String expectedUrl;
         if (page.equals("Main page")) {
-            expectedUrl = "https://www.epam.com/";
+            expectedUrl = MainPage.URL;
         }
         else if (page.equals("Contact Us page")) {
-            expectedUrl = "https://www.epam.com/about/who-we-are/contact";
+            expectedUrl = ContactPage.URL;
         }
         else expectedUrl = page;
         // waits until page is loaded, throws exception if more than 20 seconds
@@ -58,23 +58,23 @@ public class HeaderBehaviorSteps {
     @Given("I am on the Main page")
     public void iAmOnTheMainPage() {
         driver.get(MainPage.URL);
-        mainPage = new MainPage(driver);
+        header = new Header(driver);
     }
 
     @When("I click on contact us button")
     public void iClickOnContactUsButton() {
-        mainPage.clickOnContactUs();
+        header.clickOnContactUs();
     }
 
     @Given("Region panel is open")
     public void regionPanelIsOpen() {
         iAmOnTheMainPage();
-        mainPage.openRegionPanel();
+        header.openRegionPanel();
     }
 
     @When("I click on {} location")
     public void iClickOnTheLocation(String region) {
-        mainPage.chooseLocation(region);
+        header.chooseLocation(region);
     }
 
 
