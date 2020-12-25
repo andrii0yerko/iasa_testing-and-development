@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.ContactPage;
 import pageObjects.Header;
 import pageObjects.MainPage;
+import pageObjects.RegionPanel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,6 +17,7 @@ public class HeaderBehaviorSteps {
     TestContext context;
     WebDriver driver;
     Header header;
+    RegionPanel regionPanel;
 
     public HeaderBehaviorSteps(TestContext testContext) {
         context = testContext;
@@ -70,11 +72,12 @@ public class HeaderBehaviorSteps {
     public void regionPanelIsOpen() {
         iAmOnTheMainPage();
         header.openRegionPanel();
+        regionPanel = new RegionPanel(driver);
     }
 
     @When("I click on {} location")
     public void iClickOnTheLocation(String region) {
-        header.chooseLocation(region);
+        regionPanel.chooseLocation(region);
     }
 
 
