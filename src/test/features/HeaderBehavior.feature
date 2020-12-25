@@ -21,7 +21,7 @@ Feature: Header behavior
   Scenario Outline: User changes language or region
     Given Region panel is open
     When I click on <region> location
-    Then I should be redirected to the <region_page> page
+    Then I should be redirected to the <region_page>
     Examples:
       | region  | region_page              |
       | Ukraine | https://careers.epam.ua/ |
