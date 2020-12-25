@@ -4,6 +4,9 @@ import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 import stepDefinitions.TestContext;
 
+/**
+ * The entry point for Cucumber tests
+ */
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/features",
