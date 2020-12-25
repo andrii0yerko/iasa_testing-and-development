@@ -4,11 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 /**
  * Encapsulation of bottom disclaimer logic which notifies the user about cookies usage
  */
 public class CookiesDisclaimer extends Page{
+
+    @FindBy(className = "cookie-disclaimer__button")
+    WebElement acceptCookiesButton;
+    @FindBy(className = "cookie-disclaimer__content")
+    WebElement disclaimer;
 
     public CookiesDisclaimer(WebDriver driver) {
         super(driver);
@@ -16,16 +22,14 @@ public class CookiesDisclaimer extends Page{
 
     public boolean isCookiesDisclaimerVisible() {
         try {
-            driver.findElement(By.className("cookie-disclaimer__content"));
+            return disclaimer.isDisplayed();
         }
         catch (NoSuchElementException e) {
             return false;
         }
-        return true;
     }
 
     public void acceptCookies() {
-        WebElement acceptCookiesButton = driver.findElement(By.className("cookie-disclaimer__button"));
         acceptCookiesButton.click();
     }
 }

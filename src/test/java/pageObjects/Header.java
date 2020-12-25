@@ -14,14 +14,22 @@ import org.openqa.selenium.support.FindBy;
  */
 public class Header extends Page{
 
+    @FindBy(className = "header-search__button")
+    WebElement searchButton;
+    @FindBy(className = "location-selector__button")
+    WebElement regionButton;
+    @FindBy(className = "cta-button-ui")
+    WebElement contactUsButton;
+    @FindBy(className = "header__logo")
+    WebElement logo;
+
+    boolean regionPanelIsOpen = false;
+    boolean searchPanelIsOpen = false;
+
     public Header(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(className = "header-search__button")
-    WebElement searchButton;
-
-    boolean searchPanelIsOpen = false;
 
     public void openSearchPanel() {
         if (!searchPanelIsOpen) {
@@ -38,21 +46,15 @@ public class Header extends Page{
     }
 
     public void clickOnLogo() {
-        WebElement logo = driver.findElement(By.className("header__logo"));
         logo.click();
     }
 
     public void clickOnContactUs() {
-        WebElement contactUsButton = driver.findElement(By.className("cta-button-ui"));
         contactUsButton.click();
     }
 
-    WebElement regionButton;
-    boolean regionPanelIsOpen = false;
-
     public void openRegionPanel() {
         if (!regionPanelIsOpen) {
-            regionButton = driver.findElement(By.className("location-selector__button"));
             regionButton.click();
             regionPanelIsOpen = true;
         }
@@ -60,12 +62,12 @@ public class Header extends Page{
 
     public void closeRegionPanel() {
         if (regionPanelIsOpen) {
-            regionButton = driver.findElement(By.className("location-selector__button"));
             regionButton.click();
             regionPanelIsOpen = false;
         }
     }
 
+    //
     public void chooseLocation(String region) {
         WebElement regionButton;
         switch (region) {
