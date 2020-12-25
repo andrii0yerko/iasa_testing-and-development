@@ -4,8 +4,17 @@ A repo for "Testing and Development" course hometasks, KPI IASA 2020
 Chosen programming language - **JAVA**
 
 # Home Task 3: Selenium
+The aim of this assignment is to implement a little automation testing framework using [Selenium](https://www.selenium.dev/) and [Cucumber](https://cucumber.io/),
+based on BDD test cases from the previous task.
+
 ## How to run:
-0. This is Java project, so if you doesn't have JDK 8 or later you should install it.
+### Preparing of external dependencies
+This is a Java project, so if you don't have JDK 8 or later you should install it.
+
+Also, it uses ChromeWebDriver for tests launching, which means you need to have Google Chrome installed.
+
+If you prefer another browser you should change driver initialization it `TestContext.java`.
+### Launching
 1. Make sure that Maven is installed with
    ```mvn --version```, if not - install it (on Debian-based OS use `sudo apt-get install maven`)
 2. Get this branch with `git clone --single-branch --branch andrii.yerko_lab3 https://github.com/andrii0yerko/iasa_testing-and-development.git`
