@@ -60,8 +60,6 @@ public class MainPage extends Page{
     }
 
     // cookies bottom panel
-
-
     public boolean isCookiesDisclaimerVisible() {
         try {
             driver.findElement(By.className("cookie-disclaimer__content"));
@@ -86,5 +84,42 @@ public class MainPage extends Page{
     public void clickOnContactUs() {
         WebElement contactUsButton = driver.findElement(By.className("cta-button-ui"));
         contactUsButton.click();
+    }
+
+    WebElement regionButton;
+    boolean regionPanelIsOpen = false;
+
+    public void openRegionPanel() {
+        if (!regionPanelIsOpen) {
+            regionButton = driver.findElement(By.className("location-selector__button"));
+            regionButton.click();
+            regionPanelIsOpen = true;
+        }
+    }
+
+    public void closeRegionPanel() {
+        if (regionPanelIsOpen) {
+            regionButton = driver.findElement(By.className("location-selector__button"));
+            regionButton.click();
+            regionPanelIsOpen = false;
+        }
+    }
+
+    public void chooseLocation(String region) {
+        WebElement regionButton;
+        switch (region) {
+            case "Ukraine":
+                regionButton = driver.findElement(By.xpath("//*[@id=\"wrapper\"]/div[2]/div[1]/header/div/ul/li[2]/div/nav/ul/li[8]/a"));
+                break;
+            case "India":
+                regionButton = driver.findElement(By.xpath("//*[@id=\"wrapper\"]/div[2]/div[1]/header/div/ul/li[2]/div/nav/ul/li[2]/a"));
+                break;
+            case "Global":
+                regionButton = driver.findElement(By.xpath("//*[@id=\"wrapper\"]/div[2]/div[1]/header/div/ul/li[2]/div/nav/ul/li[1]/a"));
+                break;
+            default:
+                throw (new NoSuchElementException("There is no location called " + region));
+        }
+        regionButton.click();
     }
 }

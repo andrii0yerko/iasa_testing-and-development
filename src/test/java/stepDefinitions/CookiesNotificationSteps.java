@@ -3,9 +3,6 @@ package stepDefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import pageObjects.MainPage;
 
@@ -21,6 +18,7 @@ public class CookiesNotificationSteps{
     WebDriver driver;
     MainPage mainPage;
 
+
     public CookiesNotificationSteps(TestContext testContext) {
         context = testContext;
         driver = context.getDriver();
@@ -35,7 +33,7 @@ public class CookiesNotificationSteps{
 
     @When("page is loaded")
     public void pageIsLoaded() {
-        mainPage = context.getMainPage();
+        mainPage = new MainPage(driver);
     }
 
     @Then("notification about cookies should be displayed")
@@ -47,7 +45,7 @@ public class CookiesNotificationSteps{
     @Given("notification about cookies is visible")
     public void notificationAboutCookiesIsVisible() {
         driver.get(MainPage.URL);
-        mainPage = context.getMainPage();
+        mainPage = new MainPage(driver);
         assertTrue(mainPage.isCookiesDisclaimerVisible());
     }
 
@@ -60,13 +58,4 @@ public class CookiesNotificationSteps{
     public void notificationShouldDisappear() {
         assertFalse(mainPage.isCookiesDisclaimerVisible());
     }
-
-    /**
-     * Testing if new users get a cookies disclaimer
-     */
-//    @Test
-//    public void userAcceptsCookies() {
-//        mainPage.acceptCookies();
-//        assertFalse(mainPage.isCookiesDisclaimerVisible());
-//    }
 }
